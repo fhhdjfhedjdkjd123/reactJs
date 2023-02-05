@@ -6,6 +6,7 @@ function ExpenseItem() {
         <p>Food Rs10</p>
         <p>Petrol Rs100</p>
         <p>Movies Rs200</p>
+        <p>Trip Rs500</p>
       </div>
     </div>
   );
