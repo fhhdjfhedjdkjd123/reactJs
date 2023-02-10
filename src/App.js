@@ -1,7 +1,8 @@
 import ExpenseItem from "./components/Expenses/ExpenseItem";
+import React from 'react';
 
 function App(){
-  const expenses =[
+  const expenses=[
     {
       id:1,
       date: new Date(Date.UTC(2021,2,3)),
@@ -30,7 +31,6 @@ function App(){
       locaOfExpenditure: "Pune",
       price:208.4
     }
-
   ];
   return(
     <div className="expenses">
@@ -41,8 +41,10 @@ function App(){
         title={expense.title}
         location={expense.locaOfExpenditure}
         price={expense.price}
+        id={expense.id}
       ></ExpenseItem>
       ))}
+      
     </div>
   );
 }
