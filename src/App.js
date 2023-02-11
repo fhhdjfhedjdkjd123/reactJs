@@ -44,7 +44,6 @@ function App(){
         id={expense.id}
       ></ExpenseItem>
       ))}
-      
     </div>
   );
 }
