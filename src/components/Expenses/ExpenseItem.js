@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ExpenseDate from './ExpenseDate';
 import ExpenseDetails from './ExpenseDetails';
 import './ExpenseItem.css';
@@ -7,8 +7,12 @@ const ExpenseItem=(props)=>{
   // const month = props.date.toLocalString("en-US",{month: "long"});
   // const day = props.date.toLocalString("en-US",{day: "numeric"});
   // const year = props.data.toLocalString("en-US",{year: "numeric"});
+  const[price, setPrice] = useState(props.price);
   const deleteButton=()=>{
 
+  }
+  const changePrice=()=>{
+    setPrice(100);
   }
   return (
     <div className='expense-item'>
@@ -20,12 +24,13 @@ const ExpenseItem=(props)=>{
       </div> */}
       <ExpenseDate date={props.date}></ExpenseDate>
       <p className='location'>{props.location}</p>
-      <ExpenseDetails title={props.title} price={props.price}></ExpenseDetails>
+      <ExpenseDetails title={props.title} price={price}></ExpenseDetails>
       {/* <div className='expense-item__description'>
          <h2>{props.title}</h2>
          <div className='expense-item__price'>${props.price}</div>
       </div> */}
-      <button className='button' onClick={deleteButton}>Delete Expense</button>
+      <button className='changePriceBtn' onClick={changePrice}>Change Price</button>
+      <button className='deleteButton' onClick={deleteButton}>Delete Expense</button>
     </div>
   );
 }
