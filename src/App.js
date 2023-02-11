@@ -1,4 +1,5 @@
 import ExpenseItem from "./components/Expenses/ExpenseItem";
+import ExpenseForm from "./components/NewExpense/NewExpense.js";
 import React from 'react';
 
 function App(){
@@ -33,8 +34,9 @@ function App(){
     }
   ];
   return(
-    <div className="expenses">
-      <h1>Let's get Started</h1>
+    <div>
+      <ExpenseForm></ExpenseForm>
+      <div className="expenses">
       {expenses.map((expense)=>(
        <ExpenseItem 
         date={expense.date}
@@ -44,6 +46,7 @@ function App(){
         id={expense.id}
       ></ExpenseItem>
       ))}
+    </div>
     </div>
   );
 }
