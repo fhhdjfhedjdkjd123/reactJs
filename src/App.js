@@ -1,5 +1,5 @@
 import ExpenseItem from "./components/Expenses/ExpenseItem";
-import ExpenseForm from "./components/NewExpense/NewExpense.js";
+import NewExpense from "./components/NewExpense/NewExpense.js";
 import React from 'react';
 
 function App(){
@@ -33,9 +33,12 @@ function App(){
       price:208.4
     }
   ];
+  const onsaveExpenseHandler =(expense)=>{
+    console.log(expense);
+  }
   return(
     <div>
-      <ExpenseForm></ExpenseForm>
+      <NewExpense onSaveNewExpense={onsaveExpenseHandler}></NewExpense>
       <div className="expenses">
       {expenses.map((expense)=>(
        <ExpenseItem 
