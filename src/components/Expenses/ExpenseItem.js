@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ExpenseDate from './ExpenseDate';
 import ExpenseDetails from './ExpenseDetails';
+// import ExpenseFilter from './ExpenseFilter.js';
 import './ExpenseItem.css';
 const ExpenseItem=(props)=>{
   // const{date,title,location,price} = props;
@@ -14,7 +15,12 @@ const ExpenseItem=(props)=>{
   const changePrice=()=>{
     setPrice(100);
   }
+  // const [filteredYear, setFilteredYear] = useState("2022");
+  // const filterChangeHandler=(selectedYear)=>{
+  //   setFilteredYear(selectedYear);
+  // }
   return (
+  <div>
     <div className='expense-item'>
       {/* <p>{props.date.toISOString()}</p> */}
       {/* <div>
@@ -32,6 +38,7 @@ const ExpenseItem=(props)=>{
       <button className='changePriceBtn' onClick={changePrice}>Change Price</button>
       <button className='deleteButton' onClick={deleteButton}>Delete Expense</button>
     </div>
+  </div>
   );
 }
 export default ExpenseItem;
