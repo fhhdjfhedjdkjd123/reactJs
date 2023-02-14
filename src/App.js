@@ -46,23 +46,29 @@ const App=()=>{
   const filterChangeHandler=(selectedYear)=>{
     setFilteredYear(selectedYear);
   }
-
+  const filteredExpenses = expenses.filter((expense)=>{
+    return expense.date.toLocaleString("en-US",{year: "numeric"}) === filteredYear;
+  })
+  let expensesContent = <p>No Expenses found..</p>
+  if(filteredExpenses.length>0){
+    expensesContent = filteredExpenses.map((expense)=>(
+      <ExpenseItem 
+      date={expense.date}
+      title={expense.title}
+      location={expense.locaOfExpenditure}
+      price={expense.price}
+      key={expense.id}
+     ></ExpenseItem>
+    ))
+    }
   return(
     <div>
       <NewExpense onSaveNewExpense={onsaveExpenseHandler}></NewExpense>
       <div className="expenses">
       <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}></ExpenseFilter>
-      {expenses.map((expense)=>(
-       <ExpenseItem 
-        date={expense.date}
-        title={expense.title}
-        location={expense.locaOfExpenditure}
-        price={expense.price}
-        key={expense.id}
-      ></ExpenseItem>
-      ))}
+      {expensesContent}
     </div>
     </div>
   );
-}
+  }
 export default App;
