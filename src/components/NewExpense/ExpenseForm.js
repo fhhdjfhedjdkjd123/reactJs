@@ -12,7 +12,7 @@ const ExpenseForm=(props)=>{
     // });
     const titleChange=(event)=>{
         setEnteredTitle(event.target.value);
-        console.log(event.target.value);
+        //console.log(event.target.value);
 
         // setUserInput({
         //     ...userInput,
