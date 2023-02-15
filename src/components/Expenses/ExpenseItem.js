@@ -20,7 +20,7 @@ const ExpenseItem=(props)=>{
   //   setFilteredYear(selectedYear);
   // }
   return (
-  <div>
+  <li>
     <div className='expense-item'>
       {/* <p>{props.date.toISOString()}</p> */}
       {/* <div>
@@ -38,7 +38,7 @@ const ExpenseItem=(props)=>{
       <button className='changePriceBtn' onClick={changePrice}>Change Price</button>
       <button className='deleteButton' onClick={deleteButton}>Delete Expense</button>
     </div>
-  </div>
+  </li>
   );
 }
 export default ExpenseItem;

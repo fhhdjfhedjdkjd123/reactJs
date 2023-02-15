@@ -12,3 +12,6 @@ body {
   margin: 0;
   background-color: #3f3f3f;
 }
+.remainderMsg{
+  color:wheat;
+}
