@@ -1,7 +1,9 @@
-import ExpenseItem from "./components/Expenses/ExpenseItem";
+// import ExpenseItem from "./components/Expenses/ExpenseItem";
 import NewExpense from "./components/NewExpense/NewExpense.js";
 import React,{useState} from 'react';
+import './index.css';
 import ExpenseFilter from "./components/Expenses/ExpenseFilter";
+import ExpensesList from './components/Expenses/ExpensesList.js';
 
 const DUMMY_EXPENSES=[
   {
@@ -13,14 +15,14 @@ const DUMMY_EXPENSES=[
   } ,
   {
     id:2,
-    date: new Date(Date.UTC(2021,2,3,0,0,0)),
+    date: new Date(Date.UTC(2022,2,3,0,0,0)),
     title:"Rich dad poor dad",
     locaOfExpenditure: "Hyderabad",
     price:254.2
   },
   {
     id:3,
-    date: new Date(Date.UTC(2021,2,3,0,0,0)),
+    date: new Date(Date.UTC(2020,2,3,0,0,0)),
     title:"Ikeguy",
     locaOfExpenditure: "Banglore",
     price:299.6
@@ -37,36 +39,41 @@ const DUMMY_EXPENSES=[
 
 const App=()=>{
   const [expenses,setExpenses]=useState(DUMMY_EXPENSES);
-  const onsaveExpenseHandler =(expense)=>{
+  const onAddExpenseHandler =(expense)=>{
     setExpenses(prevExpense=>{
+      // console.log(prevExpense);
+      // console.log(expense);
       return [expense,...prevExpense];
+     
     });
   }
-  const [filteredYear, setFilteredYear] = useState('2022');
+  const [filteredYear, setFilteredYear] = useState('2021');
   const filterChangeHandler=(selectedYear)=>{
     setFilteredYear(selectedYear);
   }
   const filteredExpenses = expenses.filter((expense)=>{
     return expense.date.toLocaleString("en-US",{year: "numeric"}) === filteredYear;
   })
-  let expensesContent = <p>No Expenses found..</p>
-  if(filteredExpenses.length>0){
-    expensesContent = filteredExpenses.map((expense)=>(
-      <ExpenseItem 
-      date={expense.date}
-      title={expense.title}
-      location={expense.locaOfExpenditure}
-      price={expense.price}
-      key={expense.id}
-     ></ExpenseItem>
-    ))
-    }
+  
+  // let expensesContent = <p className="errorMsg">No Expenses found..</p>
+  // if(filteredExpenses.length > 0){
+  //   expensesContent = filteredExpenses.map((expense)=>(
+  //     <ExpenseItem 
+  //     date={expense.date}
+  //     title={expense.title}
+  //     location={expense.locaOfExpenditure}
+  //     price={expense.price}
+  //     key={expense.id}
+  //    ></ExpenseItem>
+  //   ))
+  //   }
   return(
     <div>
-      <NewExpense onSaveNewExpense={onsaveExpenseHandler}></NewExpense>
+      <NewExpense onAddNewExpense={onAddExpenseHandler}></NewExpense>
       <div className="expenses">
       <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler}></ExpenseFilter>
-      {expensesContent}
+      <ExpensesList items={filteredExpenses}></ExpensesList>
+      {filteredExpenses.length === 1 && <p className="remainderMsg">Only single Expense here. Please add more....</p>}
     </div>
     </div>
   );
