@@ -8,7 +8,7 @@ const ExpenseItem=(props)=>{
   // const month = props.date.toLocalString("en-US",{month: "long"});
   // const day = props.date.toLocalString("en-US",{day: "numeric"});
   // const year = props.data.toLocalString("en-US",{year: "numeric"});
-  const[price, setPrice] = useState(props.price);
+  const[amount, setPrice] = useState(props.amount);
   const deleteButton=()=>{
 
   }
@@ -30,7 +30,7 @@ const ExpenseItem=(props)=>{
       </div> */}
       <ExpenseDate date={props.date}></ExpenseDate>
       <p className='location'>{props.location}</p>
-      <ExpenseDetails title={props.title} price={price}></ExpenseDetails>
+      <ExpenseDetails title={props.title} amount={amount}></ExpenseDetails>
       {/* <div className='expense-item__description'>
          <h2>{props.title}</h2>
          <div className='expense-item__price'>${props.price}</div>
