@@ -12,7 +12,7 @@ const ExpensesList =(props)=>{
             date={expense.date}
             title={expense.title}
             location={expense.locaOfExpenditure}
-            price={expense.price}
+            amount={expense.amount}
             key={expense.id}
             ></ExpenseItem>
             ))
